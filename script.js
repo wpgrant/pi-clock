@@ -2,6 +2,8 @@
 var mode = 'clock';
 var countDownTime = '2020-07-19T00:00:00';
 var burnProtect = 1;
+var showSeconds = 0;
+var millitaryTime = 0;
 
 var lastmode = '';
 var lastViewWidth;
@@ -25,6 +27,19 @@ function showTime() {
         var h = now.getHours();
         var m = now.getMinutes();
         var s = now.getSeconds();
+
+        if (millitaryTime === 0) {
+            if (h < 12) {
+                $('#TextContainer').css('color', 'orange');
+            } else {
+                $('#TextContainer').css('color', 'blue');
+            }
+            if (h === 0) {
+                h = 12;
+            } else if (h > 12) {
+                h = h - 12;
+            }
+        }
 
         h = (h < 10) ? "0" + h : h;
         m = (m < 10) ? "0" + m : m;
@@ -75,6 +90,11 @@ function showTime() {
     document.getElementById("hour").innerText = h;
     document.getElementById("min").innerText = m;
     document.getElementById("sec").innerText = s;
+
+    if (showSeconds === 0) {
+        $('#sec').css('display', 'none');
+        $('#secsep').css('display', 'none');
+    }
 
     // Trying to do something clever here to ensure we update the time roughly within
     // 100ms of the turn of the second
