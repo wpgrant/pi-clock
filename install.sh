@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "Bill's custom installer..."
+
 yes=0
 
 do_help() {
@@ -7,7 +9,7 @@ do_help() {
     cat <<EOM
 Usage $basename [options]
 
-Installer to put stuffs in the right places.
+Installer to put stuff in the right places.
 EOM
 }
 
@@ -49,7 +51,7 @@ else
     mkdir ~/pi-clock
 fi
 
-cp -r index.html config.json.dist js script.js style.css fonts ~/pi-clock
+cp -r index.html config.json.dist js script.js style.css fonts update_* ~/pi-clock
 
 if test -d ~/.config/openbox; then
     if [ $yes -eq 0 ]; then
@@ -72,19 +74,19 @@ chmod 755 ~/.config/lxsession/LXDE-pi/autostart
 sudo apt install -y unclutter
 
 # Install crontab for checking health
-(crontab -l 2>/dev/null | grep -v "bin/checkhealth.sh"; echo "* * * * * bin/checkhealth.sh") | crontab -
+(crontab -l 2>/dev/null | grep -v "bin/checkhealth.sh"; echo "0 * * * * bin/checkhealth.sh") | crontab -
 
 # Set SSH enabled
-sudo raspi-config nonint do_ssh 0
+#sudo raspi-config nonint do_ssh 0
 
 # Set GUI autologin
-sudo raspi-config nonint do_boot_behaviour B4
+#sudo raspi-config nonint do_boot_behaviour B4
 
 # Overscan if need
-sudo raspi-config nonint do_overscan 1
+s#udo raspi-config nonint do_overscan 1
 
 # Set timezone
-sudo raspi-config nonint do_change_timezone Asia/Singapore
+#sudo raspi-config nonint do_change_timezone Asia/Singapore
 
 # Disable setup wizard
-sudo rm /etc/xdg/autostart/piwiz.desktop
+#sudo rm /etc/xdg/autostart/piwiz.desktop
