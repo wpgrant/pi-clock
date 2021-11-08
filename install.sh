@@ -83,7 +83,7 @@ sudo apt install -y unclutter
 #sudo raspi-config nonint do_boot_behaviour B4
 
 # Overscan if need
-s#udo raspi-config nonint do_overscan 1
+#sudo raspi-config nonint do_overscan 1
 
 # Set timezone
 #sudo raspi-config nonint do_change_timezone Asia/Singapore
