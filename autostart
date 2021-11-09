@@ -13,5 +13,5 @@ c
 
 unclutter -idle 5
 
-/usr/bin/chromium-browser --incognito --noerrdialogs --disable-infobars --kiosk file:///home/pi/pi-clock/index.html
+/usr/bin/chromium --incognito --noerrdialogs --disable-infobars --kiosk file:///home/pi/pi-clock/index.html
 
