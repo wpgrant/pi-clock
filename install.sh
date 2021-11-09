@@ -1,7 +1,5 @@
 #!/bin/sh
 
-echo "Bill's custom installer..."
-
 yes=0
 
 do_help() {
@@ -77,13 +75,13 @@ sudo apt install -y unclutter
 (crontab -l 2>/dev/null | grep -v "bin/checkhealth.sh"; echo "0 * * * * bin/checkhealth.sh") | crontab -
 
 # Set SSH enabled
-#sudo raspi-config nonint do_ssh 0
+sudo raspi-config nonint do_ssh 0
 
 # Set GUI autologin
-#sudo raspi-config nonint do_boot_behaviour B4
+sudo raspi-config nonint do_boot_behaviour B4
 
 # Overscan if need
-#sudo raspi-config nonint do_overscan 1
+sudo raspi-config nonint do_overscan 1
 
 # Set timezone
 #sudo raspi-config nonint do_change_timezone Asia/Singapore
